@@ -1,0 +1,10 @@
+filebeat:
+  inputs:
+    - paths:
+        - /usr/share/filebeat/logs/*.log
+      type: log
+
+output.kafka:
+  hosts: ["kafka-1:9092","kafka-2:9092","kafka-3:9092"]
+  topic: test
+  required_acks: 1

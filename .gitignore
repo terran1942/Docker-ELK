@@ -1,0 +1,4 @@
+elasticsearch/*/data/*
+!elasticsearch/*/data/.gitkeep
+logs/*
+!logs/.gitkeep
