@@ -1,6 +1,16 @@
 # Docker ELK
 Build ELK stack on the Docker
 
+## Background
+We usually need ELK for analysis of log, This project is tools of learning ELK, enjoy it!
+
+Containers include:
++ Elasticsearch cluster, 3 nodes
++ Kibana 
++ Logstash 
++ Filebeat
++ Kafka cluster, 3 nodes
+
 ## Get started
 This project uses [docker](https://docs.docker.com/install/) and [docker compose](https://docs.docker.com/compose/install/). 
 Go check them out if you do not have them locally installed.
