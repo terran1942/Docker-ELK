@@ -4,6 +4,7 @@ Build ELK stack on the Docker
 ## Get started
 This project uses [docker](https://docs.docker.com/install/) and [docker compose](https://docs.docker.com/compose/install/). 
 Go check them out if you do not have them locally installed.
+
 Create ELK containers command following:
 ``` shell
 docker-compose build
