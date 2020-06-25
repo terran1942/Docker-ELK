@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   es-1:
-    image: elasticsearch:7.6.2
+    image: elasticsearch:7.8.0
     container_name: es-1
     networks: 
       - default
@@ -22,7 +22,7 @@ services:
       - 9200:9200
 
   es-2:
-    image: elasticsearch:7.6.2
+    image: elasticsearch:7.8.0
     container_name: es-2
     networks: 
       - default
@@ -41,7 +41,7 @@ services:
       - ./elasticsearch/2/data:/usr/share/elasticsearch/data
 
   es-3:
-    image: elasticsearch:7.6.2
+    image: elasticsearch:7.8.0
     container_name: es-3
     networks: 
       - default
@@ -60,15 +60,16 @@ services:
       - ./elasticsearch/3/data:/usr/share/elasticsearch/data
 
   kibana:
-    image: kibana:7.6.2
+    image: kibana:7.8.0
     container_name: kibana
+    links: 
+      - es-1:elasticsearch
     networks: 
       - default
     ports:
       - 5601:5601
     environment:
-      - ELASTICSEARCH_URL=http://es-0:9200
-      # - ELASTICSEARCH_HOSTS=http://es-0:9200
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
 
   zookeeper:
     container_name: zookeeper
@@ -80,7 +81,7 @@ services:
 
   kafka-1:
     container_name: kafka-1
-    image: confluentinc/cp-kafka:5.4.1
+    image: confluentinc/cp-kafka:5.5.0
     networks: 
       - default
     ports:
@@ -97,7 +98,7 @@ services:
 
   kafka-2:
     container_name: kafka-2
-    image: confluentinc/cp-kafka:5.4.1
+    image: confluentinc/cp-kafka:5.5.0
     networks: 
       - default
     ports:
@@ -114,7 +115,7 @@ services:
 
   kafka-3:
     container_name: kafka-3
-    image: confluentinc/cp-kafka:5.4.1
+    image: confluentinc/cp-kafka:5.5.0
     networks: 
       - default
     ports:
@@ -145,7 +146,7 @@ services:
 
   logstash:
     container_name: logstash
-    image: logstash:7.6.2
+    image: logstash:7.8.0
     depends_on: 
       - es-1
       - es-2
@@ -160,7 +161,7 @@ services:
 
   filebeat:
     container_name: filebeat
-    image: store/elastic/filebeat:7.6.2
+    image: store/elastic/filebeat:7.8.0
     networks: 
       - default
     depends_on: 
